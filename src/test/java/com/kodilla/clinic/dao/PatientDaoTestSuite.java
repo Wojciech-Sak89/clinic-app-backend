@@ -80,6 +80,5 @@ public class PatientDaoTestSuite {
         Assert.assertEquals(tomorrow, patientDbRetrieved.get().getAppointments().get(1).getDateTime());
         Assert.assertEquals(Stars.FIVE, patientDbRetrieved.get().getEvaluations().get(0).getStars());
         Assert.assertEquals("Was ok", patientDbRetrieved.get().getEvaluations().get(1).getOpinion());
-
     }
 }

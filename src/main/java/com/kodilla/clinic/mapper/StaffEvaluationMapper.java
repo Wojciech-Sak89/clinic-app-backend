@@ -9,7 +9,9 @@ import com.kodilla.clinic.dto.StaffEvaluationDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class StaffEvaluationMapper {
@@ -39,5 +41,11 @@ public class StaffEvaluationMapper {
                 Optional.ofNullable(staffEvaluation.getPatient()).orElse(new Patient()).getPatient_id(),
                 Optional.ofNullable(staffEvaluation.getDoctor()).orElse(new Doctor()).getDoctor_id()
         );
+    }
+
+    public List<StaffEvaluationDto> mapToStaffEvaluationDtoList(List<StaffEvaluation> evaluations) {
+        return evaluations.stream()
+                .map(this::mapToStuffEvaluationDto)
+                .collect(Collectors.toList());
     }
 }

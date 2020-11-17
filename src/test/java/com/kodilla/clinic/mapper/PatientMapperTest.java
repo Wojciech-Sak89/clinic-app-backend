@@ -169,4 +169,42 @@ public class PatientMapperTest {
         assertEquals(2, patientDto.getAppointmentsIds().size());
         assertEquals(2, patientDto.getEvaluationsIds().size());
     }
+
+    @Test
+    public void testMapToPatientDtoList_EmptyList() {
+        //Given
+        List<Patient> patientList = new ArrayList<>();
+
+        //When
+        List<PatientDto> patientDtoList = patientMapper.mapToPatientDtoList(patientList);
+
+        //Then
+        assertEquals(0, patientDtoList.size());
+    }
+
+    @Test
+    public void testMapToPatientDtoList_WithPatients() {
+        //Given
+        Patient patient1 = new Patient(5,
+                "Peter", "Smith", "Chopin 30 Street",
+                LocalDate.of(1975, Month.AUGUST, 2),
+                998877123, 111222333, "smith.j@one.com",
+                false, new ArrayList<>(), new ArrayList<>());
+
+        Patient patient2 = new Patient(10,
+                "Leo", "Doanldson", "Arena 51 Street",
+                LocalDate.of(1999, Month.JANUARY, 15),
+                1111119999, 90909090, "leo.d@one.com",
+                true, new ArrayList<>(), new ArrayList<>());
+
+        List<Patient> patientList = new ArrayList<>(Arrays.asList(patient1, patient2));
+
+        //When
+        List<PatientDto> patientDtoList = patientMapper.mapToPatientDtoList(patientList);
+
+        //Then
+        assertEquals(2, patientDtoList.size());
+        assertEquals("smith.j@one.com", patientDtoList.get(0).getEmail());
+        assertEquals(1111119999, patientDtoList.get(1).getPesel());
+    }
 }

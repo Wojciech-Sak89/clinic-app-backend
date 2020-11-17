@@ -8,10 +8,18 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+
+//@NamedQuery(
+//        name = "Appointment.retrievePatientsForthcomingAppointments",
+//        query = "FROM Appointment WHERE Appointment.patient.PATIENT_ID = :PATIENT_ID AND dateTime > NOW()"
+//)
+//query = "FROM Appointment WHERE Appointment.patient.PATIENT_ID = :PATIENT_ID AND dateTime > NOW()"
+//"SELECT  u FROM User u WHERE u.fk.FK_ID =:FK_ID")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Entity(name = "APPOINTMENTS")
+@Entity
+@Table(name = "APPOINTMENTS")
 public class Appointment {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,11 +36,11 @@ public class Appointment {
     @Column(name = "STATUS")
     private Status status;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "DOCTOR_ID")
     private Doctor doctor;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PATIENT_ID")
     private Patient patient;
 

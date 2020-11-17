@@ -4,8 +4,10 @@ import com.kodilla.clinic.dao.AppointmentDao;
 import com.kodilla.clinic.dao.StaffEvaluationDao;
 import com.kodilla.clinic.domain.Appointment;
 import com.kodilla.clinic.domain.Doctor;
+import com.kodilla.clinic.domain.Patient;
 import com.kodilla.clinic.domain.StaffEvaluation;
 import com.kodilla.clinic.dto.DoctorDto;
+import com.kodilla.clinic.dto.PatientDto;
 import com.kodilla.clinic.enums.*;
 import com.kodilla.clinic.schedule.ClinicDoctorSchedule;
 import com.kodilla.clinic.schedule.EmergencyHour;
@@ -17,7 +19,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -197,5 +201,50 @@ public class DoctorMapperTest {
         assertEquals("Richards Biogram", doctorDto.getBio());
         assertEquals(2, doctorDto.getAppointmentsIds().size());
         assertEquals(2, doctorDto.getEvaluationsIds().size());
+    }
+
+    @Test
+    public void testMapToDoctorDtoList_EmptyList() {
+        //Given
+        List<Doctor> doctorList = new ArrayList<>();
+
+        //When
+        List<DoctorDto> doctorDtoList = doctorMapper.mapToDoctorDtoList(doctorList);
+
+        //Then
+        assertEquals(0, doctorDtoList.size());
+    }
+
+    @Test
+    public void testMapToDoctorDtoList_WithPatients() {
+        //Given
+        ClinicDoctorSchedule clinicDoctorSchedule1 = new ClinicDoctorSchedule.Builder()
+                .workingDay(new WorkingDay(Day.MONDAY, Hour.EIGHT_AM, Hour.FIVE_PM))
+                .emergencyHour(new EmergencyHour(Day.FRIDAY, Hour.FOUR_PM))
+                .build();
+        Doctor doctor1 = new Doctor(77, "Richard", "Davis",
+                Specialization.CHILD_PSYCHIATRY, Department.PSYCHIATRY,
+                "rich.dav.md@clinic.com", clinicDoctorSchedule1, "Richards Biogram",
+                new ArrayList<>(), new ArrayList<>());
+
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+                .workingDay(new WorkingDay(Day.FRIDAY, Hour.TWELVE_PM, Hour.SEVEN_THIRTY_PM))
+                .emergencyHour(new EmergencyHour(Day.MONDAY, Hour.SEVEN_THIRTY_PM))
+                .build();
+        Doctor doctor2 = new Doctor(33, "Dan", "Simmons",
+                Specialization.CARDIOLOGY, Department.CARDIOLOGY,
+                "dan.s.md@clinic.com", clinicDoctorSchedule, "Dans Biogram",
+                new ArrayList<>(), new ArrayList<>());
+
+        List<Doctor> doctorList = new ArrayList<>(Arrays.asList(doctor1, doctor2));
+
+        //When
+        List<DoctorDto> doctorDtoList = doctorMapper.mapToDoctorDtoList(doctorList);
+
+        //Then
+        assertEquals(2, doctorDtoList.size());
+        assertEquals("rich.dav.md@clinic.com", doctorDtoList.get(0).getEmail());
+        assertEquals(Hour.SEVEN_THIRTY_PM, doctorDtoList.get(1)
+                .getClinicDoctorSchedule().getWorkingDays().get(0).getEndHour());
     }
 }

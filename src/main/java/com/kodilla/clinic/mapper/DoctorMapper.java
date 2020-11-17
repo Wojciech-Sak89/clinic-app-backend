@@ -4,8 +4,10 @@ import com.kodilla.clinic.dao.AppointmentDao;
 import com.kodilla.clinic.dao.StaffEvaluationDao;
 import com.kodilla.clinic.domain.Appointment;
 import com.kodilla.clinic.domain.Doctor;
+import com.kodilla.clinic.domain.Patient;
 import com.kodilla.clinic.domain.StaffEvaluation;
 import com.kodilla.clinic.dto.DoctorDto;
+import com.kodilla.clinic.dto.PatientDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -49,6 +51,12 @@ public class DoctorMapper {
                 mapToAppointmentsIds(doctor.getAppointments()),
                 mapToStaffEvaluationsIds(doctor.getEvaluations())
         );
+    }
+
+    public List<DoctorDto> mapToDoctorDtoList(List<Doctor> doctors) {
+        return doctors.stream()
+                .map(this::mapToDoctorDto)
+                .collect(Collectors.toList());
     }
 
     public List<Appointment> mapToAppointments(List<Integer> appointmentsIds) {

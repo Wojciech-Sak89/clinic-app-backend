@@ -18,6 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 
 @RunWith(SpringRunner.class)
@@ -26,6 +28,9 @@ import java.util.Optional;
 public class AppointmentDaoTestSuite {
     @Autowired
     private AppointmentDao appointmentDao;
+
+//    @Autowired
+//    private PatientDao patientDao;
 
     @Test
     public void testAppointmentDaoSave() {
@@ -91,4 +96,42 @@ public class AppointmentDaoTestSuite {
                 appointmentDbRetrieved.get().getDoctor().getClinicDoctorSchedule());
         Assert.assertEquals(doctor.getDepartment(), appointmentDbRetrieved.get().getDoctor().getDepartment());
     }
+
+//    @Test
+//    public void testNamedQuery_retrievePatientsForthcomingAppointments() {
+//        //Given
+//        LocalDateTime tommorrow = LocalDateTime.now().plusDays(1);
+//        LocalDateTime yesterday = LocalDateTime.now().minusDays(1);
+//        LocalDateTime fewHoursLater = LocalDateTime.now().plusHours(5);
+//        Appointment appointmentTommorrow = new Appointment(tommorrow);
+//        Appointment appointmentYesterday = new Appointment(yesterday);
+//        Appointment appointmentFewHoursLater = new Appointment(fewHoursLater);
+//
+//        Patient patient = new Patient(
+//                "Peter", "Smith", "Chopin 30 Street",
+//                LocalDate.of(1975, Month.AUGUST, 2),
+//                998877123, 111222333, "smith.j@one.com");
+//
+//        appointmentTommorrow.setPatient(patient);
+//        appointmentFewHoursLater.setPatient(patient);
+//        appointmentYesterday.setPatient(patient);
+//
+//        patient.setAppointments(
+//                Arrays.asList(appointmentFewHoursLater, appointmentTommorrow, appointmentYesterday));
+//
+//        //When
+//        appointmentDao.save(appointmentFewHoursLater);
+//        appointmentDao.save(appointmentTommorrow);
+//        appointmentDao.save(appointmentYesterday);
+//
+//        //Then
+//        Optional<List<Appointment>> forthcomingAppointmentsDbRetrieved = appointmentDao
+//                .retrievePatientsForthcomingAppointments(patient.getPatient_id());
+//
+//        Assert.assertTrue(forthcomingAppointmentsDbRetrieved.isPresent());
+//        Assert.assertEquals(2, forthcomingAppointmentsDbRetrieved.get().size());
+//        Assert.assertEquals(fewHoursLater, forthcomingAppointmentsDbRetrieved.get().get(0).getDateTime());
+//        Assert.assertEquals(tommorrow, forthcomingAppointmentsDbRetrieved.get().get(1).getDateTime());
+//
+//    }
 }

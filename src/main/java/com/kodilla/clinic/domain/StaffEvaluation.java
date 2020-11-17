@@ -12,7 +12,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Entity(name = "STAFF_EVALUATIONS")
+@Entity
+@Table(name = "STAFF_EVALUATIONS")
 public class StaffEvaluation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,11 +31,11 @@ public class StaffEvaluation {
     @Column(name = "DATE")
     private LocalDateTime entryDate;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "PATIENT_ID")
     private Patient patient;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "DOCTOR_ID")
     private Doctor doctor;
 

@@ -8,11 +8,13 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@Entity(name = "PATIENTS")
+@Entity
+@Table(name = "PATIENTS")
 public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -78,6 +80,27 @@ public class Patient {
 
     public void setInUrgency(boolean inUrgency) {
         this.inUrgency = inUrgency;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Patient patient = (Patient) o;
+
+        if (pesel != patient.pesel) return false;
+        if (telNum != patient.telNum) return false;
+        if (inUrgency != patient.inUrgency) return false;
+        if (!patient_id.equals(patient.patient_id)) return false;
+        if (!name.equals(patient.name)) return false;
+        if (!surname.equals(patient.surname)) return false;
+        if (!address.equals(patient.address)) return false;
+        if (!birthDate.equals(patient.birthDate)) return false;
+        if (!Objects.equals(email, patient.email)) return false;
+        if (!Objects.equals(appointments, patient.appointments))
+            return false;
+        return Objects.equals(evaluations, patient.evaluations);
     }
 }
 

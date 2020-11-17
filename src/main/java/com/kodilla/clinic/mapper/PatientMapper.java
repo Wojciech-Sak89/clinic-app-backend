@@ -53,6 +53,12 @@ public class PatientMapper {
         );
     }
 
+    public List<PatientDto> mapToPatientDtoList(List<Patient> patients) {
+        return patients.stream()
+                .map(this::mapToPatientDto)
+                .collect(Collectors.toList());
+    }
+
     public List<Appointment> mapToAppointments(List<Integer> appointmentsIds) {
         return appointmentsIds.stream()
                 .map(appointmentId -> appointmentDao.findById(appointmentId))

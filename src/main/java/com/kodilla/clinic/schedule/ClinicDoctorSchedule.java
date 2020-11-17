@@ -1,12 +1,11 @@
 package com.kodilla.clinic.schedule;
 
 
-import com.kodilla.clinic.enums.Day;
-import com.kodilla.clinic.enums.Hour;
-
 import javax.persistence.ElementCollection;
 import javax.persistence.Embeddable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 @Embeddable
 public final class ClinicDoctorSchedule {
