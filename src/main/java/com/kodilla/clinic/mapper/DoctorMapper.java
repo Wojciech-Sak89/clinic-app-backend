@@ -4,10 +4,9 @@ import com.kodilla.clinic.dao.AppointmentDao;
 import com.kodilla.clinic.dao.StaffEvaluationDao;
 import com.kodilla.clinic.domain.Appointment;
 import com.kodilla.clinic.domain.Doctor;
-import com.kodilla.clinic.domain.Patient;
 import com.kodilla.clinic.domain.StaffEvaluation;
 import com.kodilla.clinic.dto.DoctorDto;
-import com.kodilla.clinic.dto.PatientDto;
+import com.kodilla.clinic.mapper.schedule.ClinicDoctorScheduleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +16,9 @@ import java.util.stream.Collectors;
 
 @Component
 public class DoctorMapper {
+    @Autowired
+    private ClinicDoctorScheduleMapper scheduleMapper;
+
     @Autowired
     private AppointmentDao appointmentDao;
 
@@ -31,7 +33,7 @@ public class DoctorMapper {
                 doctorDto.getSpecialization(),
                 doctorDto.getDepartment(),
                 doctorDto.getEmail(),
-                doctorDto.getClinicDoctorSchedule(),
+                scheduleMapper.mapToClinicDoctorSchedule(doctorDto.getClinicDoctorScheduleDto()),
                 doctorDto.getBio(),
                 mapToAppointments(doctorDto.getAppointmentsIds()),
                 mapToStaffEvaluations(doctorDto.getEvaluationsIds())
@@ -46,7 +48,7 @@ public class DoctorMapper {
                 doctor.getSpecialization(),
                 doctor.getDepartment(),
                 doctor.getEmail(),
-                doctor.getClinicDoctorSchedule(),
+                scheduleMapper.mapToClinicDoctorScheduleDto(doctor.getClinicDoctorSchedule()),
                 doctor.getBio(),
                 mapToAppointmentsIds(doctor.getAppointments()),
                 mapToStaffEvaluationsIds(doctor.getEvaluations())

@@ -39,7 +39,7 @@ public class AppointmentController {
         return mapper.mapToAppointmentDto(service.saveAppointment(mapper.mapToAppointment(appointmentDto)));
     }
 
-    @RequestMapping(method = RequestMethod.DELETE, value = "doctors/{appointmentId}")
+    @RequestMapping(method = RequestMethod.DELETE, value = "appointments/{appointmentId}")
     public void deleteDoctor(@PathVariable Integer appointmentId) {
         service.deleteAppointment(appointmentId);
     }

@@ -1,8 +1,8 @@
 package com.kodilla.clinic.dto;
 
+import com.kodilla.clinic.dto.schedule.ClinicDoctorScheduleDto;
 import com.kodilla.clinic.enums.Department;
 import com.kodilla.clinic.enums.Specialization;
-import com.kodilla.clinic.schedule.ClinicDoctorSchedule;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +19,7 @@ public class DoctorDto {
     private Specialization specialization;
     private Department department;
     private String email;
-    private ClinicDoctorSchedule clinicDoctorSchedule;
+    private ClinicDoctorScheduleDto clinicDoctorScheduleDto;
     private String bio;
     private List<Integer> appointmentsIds;
     private List<Integer> evaluationsIds;

@@ -1,4 +1,4 @@
-package com.kodilla.clinic.schedule;
+package com.kodilla.clinic.dto.schedule;
 
 import com.kodilla.clinic.enums.Day;
 import com.kodilla.clinic.enums.Hour;
@@ -6,14 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Embeddable;
+import java.util.List;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
-@Embeddable
-public class WorkingDay {
+public class EmergencyHourDto {
+    private Integer emergencyHour_id;
     private Day day;
-    private Hour startHour;
-    private Hour endHour;
+    private Hour hour;
+    private List<Integer> schedulesIds;
 }

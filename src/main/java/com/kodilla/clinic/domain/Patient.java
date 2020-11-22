@@ -3,6 +3,8 @@ package com.kodilla.clinic.domain;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -47,7 +49,7 @@ public class Patient {
     @OneToMany(
             targetEntity = Appointment.class,
             mappedBy = "patient",
-            cascade = CascadeType.PERSIST,
+            cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
     private List<Appointment> appointments = new ArrayList<>();
@@ -55,7 +57,7 @@ public class Patient {
     @OneToMany(
             targetEntity = StaffEvaluation.class,
             mappedBy = "patient",
-            cascade = CascadeType.PERSIST,
+            cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
     private List<StaffEvaluation> evaluations = new ArrayList<>();

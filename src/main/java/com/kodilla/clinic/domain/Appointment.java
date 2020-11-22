@@ -4,17 +4,33 @@ import com.kodilla.clinic.enums.Status;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-
-//@NamedQuery(
-//        name = "Appointment.retrievePatientsForthcomingAppointments",
-//        query = "FROM Appointment WHERE Appointment.patient.PATIENT_ID = :PATIENT_ID AND dateTime > NOW()"
-//)
+@NamedQueries({
+//        @NamedQuery(
+//                name = "Appointment.retrievePatientsForthcomingAppointments",
+//                query = "FROM Appointment WHERE Appointment.patient.PATIENT_ID = :PATIENT_ID AND dateTime > NOW()"
+//        ),
+        @NamedQuery(
+                name = "Appointment.retrieveForthcomingAppointments",
+                query = "FROM Appointment WHERE dateTime > NOW()"
+//                query = "SELECT a FROM Appointment a WHERE a.patient.patient_id = :PATIENT_ID AND a.dateTime > current_time "
+        )
+})
 //query = "FROM Appointment WHERE Appointment.patient.PATIENT_ID = :PATIENT_ID AND dateTime > NOW()"
 //"SELECT  u FROM User u WHERE u.fk.FK_ID =:FK_ID")
+// a.dateTime > LocalDateTime.now()
+
+@NamedNativeQuery(
+        name = "Appointment.retrievePatientsForthcomingAppointments",
+        query = "SELECT * FROM APPOINTMENTS" +
+                " WHERE PATIENT_ID = :PATIENT_ID AND DATE > NOW()",
+        resultClass = Appointment.class
+)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -36,13 +52,19 @@ public class Appointment {
     @Column(name = "STATUS")
     private Status status;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "DOCTOR_ID")
     private Doctor doctor;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "PATIENT_ID")
     private Patient patient;
+
+    public Appointment(boolean forEmergency, LocalDateTime dateTime, Status status) {
+        this.forEmergency = forEmergency;
+        this.dateTime = dateTime;
+        this.status = status;
+    }
 
     public Appointment(LocalDateTime dateTime) {
         this.dateTime = dateTime;

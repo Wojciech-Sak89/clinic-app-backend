@@ -2,7 +2,7 @@ package com.kodilla.clinic.domain;
 
 import com.kodilla.clinic.enums.Department;
 import com.kodilla.clinic.enums.Specialization;
-import com.kodilla.clinic.schedule.ClinicDoctorSchedule;
+import com.kodilla.clinic.domain.schedule.ClinicDoctorSchedule;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -38,7 +38,8 @@ public class Doctor {
     @Column(name = "EMAIL")
     private String email;
 
-    @Embedded
+    @OneToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+    @JoinColumn(name = "FK_CLINIC_DOCTOR_SCHEDULE_ID")
     private ClinicDoctorSchedule clinicDoctorSchedule;
 
     @Column(name = "BIO_NOTE")
@@ -46,16 +47,16 @@ public class Doctor {
 
     @OneToMany(
             targetEntity = Appointment.class,
-            mappedBy = "patient",
-            cascade = CascadeType.PERSIST,
+            mappedBy = "doctor",
+            cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
     private List<Appointment> appointments = new ArrayList<>();
 
     @OneToMany(
             targetEntity = StaffEvaluation.class,
-            mappedBy = "patient",
-            cascade = CascadeType.PERSIST,
+            mappedBy = "doctor",
+            cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
     private List<StaffEvaluation> evaluations = new ArrayList<>();
