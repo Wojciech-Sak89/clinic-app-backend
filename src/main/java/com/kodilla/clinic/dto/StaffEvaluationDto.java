@@ -17,4 +17,12 @@ public class StaffEvaluationDto {
     private LocalDateTime entryDate;
     private Integer patient_Id;
     private Integer doctor_Id;
+
+    public StaffEvaluationDto(Integer evaluation_id, Stars stars, String opinion, Integer patient_Id, Integer doctor_Id) {
+        this.evaluation_id = evaluation_id;
+        this.stars = stars;
+        this.opinion = opinion;
+        this.patient_Id = patient_Id;
+        this.doctor_Id = doctor_Id;
+    }
 }

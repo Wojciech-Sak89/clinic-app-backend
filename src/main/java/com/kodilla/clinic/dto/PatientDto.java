@@ -23,4 +23,17 @@ public class PatientDto {
     private boolean inUrgency;
     private List<Integer> appointmentsIds;
     private List<Integer> evaluationsIds;
+
+    public PatientDto(Integer patient_id, String name, String surname, String address, int pesel, int telNum, String email, boolean inUrgency, List<Integer> appointmentsIds, List<Integer> evaluationsIds) {
+        this.patient_id = patient_id;
+        this.name = name;
+        this.surname = surname;
+        this.address = address;
+        this.pesel = pesel;
+        this.telNum = telNum;
+        this.email = email;
+        this.inUrgency = inUrgency;
+        this.appointmentsIds = appointmentsIds;
+        this.evaluationsIds = evaluationsIds;
+    }
 }

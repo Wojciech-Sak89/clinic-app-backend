@@ -17,4 +17,12 @@ public class AppointmentDto {
     private Status status;
     private Integer doctorId;
     private Integer patientId;
+
+    public AppointmentDto(Integer appointment_id, boolean forEmergency, Status status, Integer doctorId, Integer patientId) {
+        this.appointment_id = appointment_id;
+        this.forEmergency = forEmergency;
+        this.status = status;
+        this.doctorId = doctorId;
+        this.patientId = patientId;
+    }
 }
