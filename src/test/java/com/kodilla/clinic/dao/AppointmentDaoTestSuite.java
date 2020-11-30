@@ -6,6 +6,7 @@ import com.kodilla.clinic.dao.schedule.WorkingDayDao;
 import com.kodilla.clinic.domain.Appointment;
 import com.kodilla.clinic.domain.Doctor;
 import com.kodilla.clinic.domain.Patient;
+import com.kodilla.clinic.domain.StaffEvaluation;
 import com.kodilla.clinic.enums.*;
 import com.kodilla.clinic.domain.schedule.ClinicDoctorSchedule;
 import com.kodilla.clinic.domain.schedule.EmergencyHour;
@@ -18,10 +19,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -79,7 +82,7 @@ public class AppointmentDaoTestSuite {
         Patient patient = new Patient(
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "wojciech.r.sak@gmail.com");
+                new BigDecimal(998877123), new BigDecimal(111222333), "wojciech.r.sak@gmail.com");
 
 
         ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
@@ -130,7 +133,7 @@ public class AppointmentDaoTestSuite {
         Patient patient = new Patient(
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "smith.j@one.com");
+                new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com");
 
         appointmentTomorrow.setPatient(patient);
         appointmentFewHoursLater.setPatient(patient);
@@ -189,11 +192,11 @@ public class AppointmentDaoTestSuite {
 //                .build();
 //        clinicDoctorScheduleDao.save(clinicDoctorSchedule);
 //
-//        workingDay1.setSchedule(clinicDoctorSchedule);
-//        workingDay2.setSchedule(clinicDoctorSchedule);
-//        workingDay3.setSchedule(clinicDoctorSchedule);
-//        emergencyHour1.setSchedule(clinicDoctorSchedule);
-//        emergencyHour2.setSchedule(clinicDoctorSchedule);
+//        workingDay1.setSchedules(Collections.singletonList(clinicDoctorSchedule));
+//        workingDay2.setSchedules(Collections.singletonList(clinicDoctorSchedule));
+//        workingDay3.setSchedules(Collections.singletonList(clinicDoctorSchedule));
+//        emergencyHour1.setSchedules(Collections.singletonList(clinicDoctorSchedule));
+//        emergencyHour2.setSchedules(Collections.singletonList(clinicDoctorSchedule));
 //
 //
 //        Doctor doctor = new Doctor("Richard", "Davis",

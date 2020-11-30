@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -44,7 +45,7 @@ public class PatientMapperTest {
         PatientDto patientDto = new PatientDto(5,
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "smith.j@one.com",
+                new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com",
                 false, new ArrayList<>(), new ArrayList<>());
 
         //When
@@ -56,8 +57,8 @@ public class PatientMapperTest {
         assertEquals("Smith", patient.getSurname());
         assertEquals("Chopin 30 Street", patient.getAddress());
         assertEquals(LocalDate.of(1975, Month.AUGUST, 2), patient.getBirthDate());
-        assertEquals(998877123, patient.getPesel());
-        assertEquals(111222333, patient.getTelNum());
+        assertEquals(new BigDecimal(998877123), patient.getPesel());
+        assertEquals(new BigDecimal(111222333), patient.getTelNum());
         assertEquals("smith.j@one.com", patient.getEmail());
         assertFalse(patient.isInUrgency());
         assertEquals(0, patient.getAppointments().size());
@@ -90,7 +91,7 @@ public class PatientMapperTest {
         PatientDto patientDto = new PatientDto(5,
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "smith.j@one.com",
+                new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com",
                 false, appointmentsIds, evaluationsIds);
 
         //When
@@ -116,7 +117,7 @@ public class PatientMapperTest {
         Patient patient = new Patient(5,
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "smith.j@one.com",
+                new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com",
                 false, new ArrayList<>(), new ArrayList<>());
 
         //When
@@ -128,8 +129,8 @@ public class PatientMapperTest {
         assertEquals("Smith", patientDto.getSurname());
         assertEquals("Chopin 30 Street", patientDto.getAddress());
         assertEquals(LocalDate.of(1975, Month.AUGUST, 2), patientDto.getBirthDate());
-        assertEquals(998877123, patientDto.getPesel());
-        assertEquals(111222333, patientDto.getTelNum());
+        assertEquals(new BigDecimal(998877123), patientDto.getPesel());
+        assertEquals(new BigDecimal(111222333), patientDto.getTelNum());
         assertEquals("smith.j@one.com", patientDto.getEmail());
         assertFalse(patientDto.isInUrgency());
         assertEquals(0, patientDto.getAppointmentsIds().size());
@@ -157,7 +158,7 @@ public class PatientMapperTest {
         Patient patient = new Patient(5,
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "smith.j@one.com",
+                new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com",
                 false, appointments, evaluations);
 
         //When
@@ -188,13 +189,13 @@ public class PatientMapperTest {
         Patient patient1 = new Patient(5,
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "smith.j@one.com",
+                new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com",
                 false, new ArrayList<>(), new ArrayList<>());
 
         Patient patient2 = new Patient(10,
                 "Leo", "Doanldson", "Arena 51 Street",
                 LocalDate.of(1999, Month.JANUARY, 15),
-                1111119999, 90909090, "leo.d@one.com",
+                new BigDecimal(1111119999), new BigDecimal(90909090), "leo.d@one.com",
                 true, new ArrayList<>(), new ArrayList<>());
 
         List<Patient> patientList = new ArrayList<>(Arrays.asList(patient1, patient2));
@@ -205,6 +206,6 @@ public class PatientMapperTest {
         //Then
         assertEquals(2, patientDtoList.size());
         assertEquals("smith.j@one.com", patientDtoList.get(0).getEmail());
-        assertEquals(1111119999, patientDtoList.get(1).getPesel());
+        assertEquals(new BigDecimal(1111119999), patientDtoList.get(1).getPesel());
     }
 }

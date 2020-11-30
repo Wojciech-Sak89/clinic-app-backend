@@ -1,7 +1,6 @@
 package com.kodilla.clinic.enums;
 
 public enum Hour {
-    FIRST_HALF, SECOND_HALF,
     EIGHT_AM, EIGHT_THIRTY_AM,
     NINE_AM, NINE_THIRTY_AM,
     TEN_AM, TEN_THIRTY_AM,

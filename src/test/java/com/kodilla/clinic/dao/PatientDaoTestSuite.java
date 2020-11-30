@@ -12,6 +12,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -31,7 +32,7 @@ public class PatientDaoTestSuite {
         Patient patient = new Patient(
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "smith.j@one.com");
+                new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com");
 
         //When
         patientDao.save(patient);
@@ -43,7 +44,7 @@ public class PatientDaoTestSuite {
         Assert.assertTrue(patientDbRetrieved.isPresent());
 
         Assert.assertEquals(1975, patientDbRetrieved.get().getBirthDate().getYear());
-        Assert.assertEquals(998877123, patientDbRetrieved.get().getPesel());
+        Assert.assertEquals(new BigDecimal(998877123), patientDbRetrieved.get().getPesel());
     }
 
     @Test
@@ -52,7 +53,7 @@ public class PatientDaoTestSuite {
         Patient patient = new Patient(
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "smith.j@one.com");
+                new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com");
 
         LocalDateTime today = LocalDateTime.now();
         LocalDateTime tomorrow = LocalDateTime.now().plusDays(1);

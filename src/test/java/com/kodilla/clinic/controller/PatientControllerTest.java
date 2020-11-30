@@ -19,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -65,11 +66,11 @@ public class PatientControllerTest {
         LocalDate localDate = LocalDate.now();
         List<Patient> patientList = new ArrayList<>();
         patientList.add(new Patient(15, "Name", "Surname", "address",
-                localDate, 1000, 2222, "mail@mail.com", true, new ArrayList<>(), new ArrayList<>()));
+                localDate, new BigDecimal(1000), new BigDecimal(2222), "mail@mail.com", true, new ArrayList<>(), new ArrayList<>()));
 
         List<PatientDto> patientDtoList = new ArrayList<>();
         patientDtoList.add(new PatientDto(15, "Name", "Surname", "address",
-                localDate, 1000, 2222, "mail@mail.com", true, new ArrayList<>(), new ArrayList<>()));
+                localDate, new BigDecimal(1000), new BigDecimal(2222), "mail@mail.com", true, new ArrayList<>(), new ArrayList<>()));
 
         when(service.getAllPatients()).thenReturn(patientList);
         when(mapper.mapToPatientDtoList(patientList)).thenReturn(patientDtoList);
@@ -96,10 +97,10 @@ public class PatientControllerTest {
         //Given
         LocalDate localDate = LocalDate.now();
         Patient patient = new Patient(15, "Name", "Surname", "address",
-                localDate, 1000, 2222, "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
+                localDate, new BigDecimal(1000), new BigDecimal(2222), "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
 
         PatientDto patientDto = new PatientDto(15, "Name", "Surname", "address",
-                localDate, 1000, 2222, "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
+                localDate, new BigDecimal(1000), new BigDecimal(2222), "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
 
         when(service.getPatient(15)).thenReturn(java.util.Optional.of(patient));
         when(mapper.mapToPatientDto(patient)).thenReturn(patientDto);
@@ -126,10 +127,10 @@ public class PatientControllerTest {
         //Given
         LocalDate localDate = LocalDate.now();
         Patient patient = new Patient(15, "Name", "Surname", "address",
-                localDate, 1000, 2222, "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
+                localDate, new BigDecimal(1000), new BigDecimal(2222), "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
 
         PatientDto patientDto = new PatientDto(15, "Name", "Surname", "address",
-                1000, 2222, "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
+                new BigDecimal(1000), new BigDecimal(2222), "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
 
         Gson gson = new Gson();
         String jsonContent = gson.toJson(patientDto);
@@ -148,10 +149,10 @@ public class PatientControllerTest {
         //Given
         LocalDate localDate = LocalDate.now();
         Patient patient = new Patient(15, "Name", "Surname", "address",
-                localDate, 1000, 2222, "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
+                localDate, new BigDecimal(1000), new BigDecimal(2222), "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
 
         PatientDto patientDto = new PatientDto(15, "Name", "Surname", "address",
-                1000, 2222, "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
+                new BigDecimal(1000), new BigDecimal(2222), "mail@mail.com", true, new ArrayList<>(), new ArrayList<>());
 
         when(mapper.mapToPatientDto(any())).thenReturn(patientDto);
         when(service.savePatient(patient)).thenReturn(patient);

@@ -20,30 +20,30 @@ public class ClinicDoctorScheduleController {
     private DbService service;
 
     @RequestMapping(method = RequestMethod.GET, value = "clinicDoctorsSchedules")
-    public List<ClinicDoctorScheduleDto> getEmergencyHours() {
+    public List<ClinicDoctorScheduleDto> getSchedules() {
         return mapper.mapToClinicDoctorScheduleDtos(service.getAllClinicDoctorSchedules());
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "clinicDoctorsSchedules/{scheduleId}")
-    public ClinicDoctorScheduleDto getEmergencyHour(@PathVariable Integer scheduleId) throws ClinicDoctorScheduleNotFoundException {
+    public ClinicDoctorScheduleDto getSchedule(@PathVariable Integer scheduleId) throws ClinicDoctorScheduleNotFoundException {
         return mapper.mapToClinicDoctorScheduleDto(
                 service.getClinicDoctorSchedule(scheduleId).orElseThrow(ClinicDoctorScheduleNotFoundException::new));
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "clinicDoctorsSchedules")
-    public ClinicDoctorScheduleDto addEmergencyHour(@RequestBody ClinicDoctorScheduleDto clinicDoctorScheduleDto) {
+    public ClinicDoctorScheduleDto addSchedule(@RequestBody ClinicDoctorScheduleDto clinicDoctorScheduleDto) {
         return mapper.mapToClinicDoctorScheduleDto(
                 service.saveClinicDoctorSchedule(mapper.mapToClinicDoctorSchedule(clinicDoctorScheduleDto)));
     }
 
     @RequestMapping(method = RequestMethod.PUT, value = "clinicDoctorsSchedules")
-    public ClinicDoctorScheduleDto updateEmergencyHour(@RequestBody ClinicDoctorScheduleDto clinicDoctorScheduleDto) {
+    public ClinicDoctorScheduleDto updateSchedule(@RequestBody ClinicDoctorScheduleDto clinicDoctorScheduleDto) {
         return mapper.mapToClinicDoctorScheduleDto(
                 service.saveClinicDoctorSchedule(mapper.mapToClinicDoctorSchedule(clinicDoctorScheduleDto)));
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "clinicDoctorsSchedules/{scheduleId}")
-    public void deleteEmergencyHour(@PathVariable Integer scheduleId) {
+    public void deleteSchedule(@PathVariable Integer scheduleId) {
         service.deleteClinicDoctorSchedule(scheduleId);
     }
 }

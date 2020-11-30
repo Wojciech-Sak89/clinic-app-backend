@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,11 +35,13 @@ public class Patient {
     @Column(name = "BIRTH_DATE")
     private LocalDate birthDate;
 
-    @Column(name = "PESEL")
-    private int pesel;
+    @Column(name = "PESEL", precision=15, columnDefinition="Decimal(15,2)")
+    @Digits(integer=15, fraction=0)
+    private BigDecimal pesel;
 
-    @Column(name = "TELEPHONE_NUM")
-    private int telNum;
+    @Column(name = "TELEPHONE_NUM", precision=15, columnDefinition="Decimal(15,2)")
+    @Digits(integer=15, fraction=0)
+    private BigDecimal telNum;
 
     @Column(name = "EMAIL")
     private String email;
@@ -60,7 +64,7 @@ public class Patient {
     )
     private List<StaffEvaluation> evaluations = new ArrayList<>();
 
-    public Patient(String name, String surname, String address, LocalDate birthDate, int pesel, int telNum, String email) {
+    public Patient(String name, String surname, String address, LocalDate birthDate, BigDecimal pesel, BigDecimal telNum, String email) {
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -89,8 +93,8 @@ public class Patient {
 
         Patient patient = (Patient) o;
 
-        if (pesel != patient.pesel) return false;
-        if (telNum != patient.telNum) return false;
+        if (!pesel.equals(patient.pesel)) return false;
+        if (!telNum.equals(patient.telNum)) return false;
         if (inUrgency != patient.inUrgency) return false;
         if (!patient_id.equals(patient.patient_id)) return false;
         if (!name.equals(patient.name)) return false;

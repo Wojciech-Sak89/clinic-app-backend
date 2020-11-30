@@ -17,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
@@ -64,7 +65,7 @@ public class AppointmentMapperTest {
         Patient patient = new Patient(
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "smith.j@one.com");
+                new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com");
 
 
         ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
@@ -142,7 +143,7 @@ public class AppointmentMapperTest {
         Patient patient = new Patient(
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "smith.j@one.com");
+                new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com");
 
 
         ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
@@ -193,13 +194,13 @@ public class AppointmentMapperTest {
         Patient patient1 = new Patient(5,
                 "Peter", "Smith", "Chopin 30 Street",
                 LocalDate.of(1975, Month.AUGUST, 2),
-                998877123, 111222333, "smith.j@one.com",
+                new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com",
                 false, new ArrayList<>(), new ArrayList<>());
 
         Patient patient2 = new Patient(10,
                 "Leo", "Doanldson", "Arena 51 Street",
                 LocalDate.of(1999, Month.JANUARY, 15),
-                1111119999, 90909090, "leo.d@one.com",
+                new BigDecimal(1111119999), new BigDecimal(90909090), "leo.d@one.com",
                 true, new ArrayList<>(), new ArrayList<>());
 
         ClinicDoctorSchedule clinicDoctorSchedule1 = new ClinicDoctorSchedule.Builder()
@@ -247,10 +248,3 @@ public class AppointmentMapperTest {
         assertEquals(Integer.valueOf(33), appointmentDtoList.get(1).getDoctorId());
     }
 }
-
-/*     appointment.getAppointment_id(),
-                appointment.isForEmergency(),
-                appointment.getDateTime(),
-                appointment.getStatus(),
-                Optional.ofNullable(appointment.getDoctor()).orElse(new Doctor()).getDoctor_id(),
-                Optional.ofNullable(appointment.getPatient()).orElse(new Patient()).getPatient_id()*/

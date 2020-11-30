@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "CLINIC_DOCTORS_SCHEDULES")
-public final class ClinicDoctorSchedule {
+public class ClinicDoctorSchedule {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "CLINIC_DOCTOR_SCHEDULE_ID", unique = true)
@@ -85,23 +85,5 @@ public final class ClinicDoctorSchedule {
 
     public List<EmergencyHour> getEmergencyHours() {
         return emergencyHours;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ClinicDoctorSchedule that = (ClinicDoctorSchedule) o;
-
-        if (!workingDays.equals(that.workingDays)) return false;
-        return Objects.equals(emergencyHours, that.emergencyHours);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = workingDays.hashCode();
-        result = 31 * result + (emergencyHours != null ? emergencyHours.hashCode() : 0);
-        return result;
     }
 }

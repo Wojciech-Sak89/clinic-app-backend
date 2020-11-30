@@ -22,6 +22,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'junit:junit:4.12'
 
+    //http
+    implementation 'org.apache.httpcomponents:httpclient:4.5.13'
+
     //lombok
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
@@ -33,6 +36,9 @@ dependencies {
     //mail
     implementation 'org.springframework.boot:spring-boot-starter-mail:2.4.0'
     compile('com.google.code.gson:gson:2.8.2')
+
+    //spring
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.4.0'
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'

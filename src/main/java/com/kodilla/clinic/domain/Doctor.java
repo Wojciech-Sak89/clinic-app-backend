@@ -79,24 +79,4 @@ public class Doctor {
     public void setEvaluations(List<StaffEvaluation> evaluations) {
         this.evaluations = evaluations;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Doctor doctor = (Doctor) o;
-
-        if (!doctor_id.equals(doctor.doctor_id)) return false;
-        if (!name.equals(doctor.name)) return false;
-        if (!surname.equals(doctor.surname)) return false;
-        if (specialization != doctor.specialization) return false;
-        if (department != doctor.department) return false;
-        if (!email.equals(doctor.email)) return false;
-        if (!clinicDoctorSchedule.equals(doctor.clinicDoctorSchedule)) return false;
-        if (!bio.equals(doctor.bio)) return false;
-        if (!Objects.equals(appointments, doctor.appointments))
-            return false;
-        return Objects.equals(evaluations, doctor.evaluations);
-    }
 }
