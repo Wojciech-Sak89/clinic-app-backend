@@ -18,7 +18,7 @@ public class MedicService {
         return medicClient.getSymptoms();
     }
 
-    public List<SpecialisationDto> getSpecialisations(int birthYear, Gender gender, int[] symptomsIds) throws Exception {
+    public List<SpecialisationDto> getSpecialisations(int birthYear, Gender gender, List<Integer> symptomsIds) throws Exception {
         return medicClient.getSpecialisations(birthYear, gender, symptomsIds);
     }
 }

@@ -21,11 +21,11 @@ public class MedicController {
         return service.getSymptoms();
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "recommendations")
+    @RequestMapping(method = RequestMethod.POST, value = "recommendations")
     public List<SpecialisationDto> getRecommendations(
             @RequestParam("birthYear") int birthYear,
             @RequestParam("gender") Gender gender,
-            @RequestBody(required = false) int[] symptoms) throws Exception {
+            @RequestBody List<Integer> symptoms) throws Exception {
         return service.getSpecialisations(birthYear, gender, symptoms);
     }
 }
