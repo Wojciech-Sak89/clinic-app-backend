@@ -12,8 +12,8 @@ public class ClinicApplication {
         SpringApplication.run(ClinicApplication.class, args);
 
         TokenRetriever tokenRetriever = new TokenRetriever();
-        System.out.println(tokenRetriever.retrieveToken("wojciech.r.sak@gmail.com", "f8SQg76JjLd4k9X3H", "https://sandbox-authservice.priaid.ch/login").getToken());
-        System.out.println(tokenRetriever.retrieveToken("wojciech.r.sak@gmail.com", "f8SQg76JjLd4k9X3H", "https://sandbox-authservice.priaid.ch/login").getValidThrough());
+        System.out.println("Access token for ApiMedic (for Postman testing purposes): " + tokenRetriever.retrieveToken("wojciech.r.sak@gmail.com", "f8SQg76JjLd4k9X3H", "https://sandbox-authservice.priaid.ch/login").getToken());
+        System.out.println("Token is valid for " + tokenRetriever.retrieveToken("wojciech.r.sak@gmail.com", "f8SQg76JjLd4k9X3H", "https://sandbox-authservice.priaid.ch/login").getValidThrough()/60 + " minutes.");
     }
 
 }

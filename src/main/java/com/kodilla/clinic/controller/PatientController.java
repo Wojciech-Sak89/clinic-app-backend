@@ -44,10 +44,3 @@ public class PatientController {
         service.deletePatient(patientId);
     }
 }
-
-/*
-	PACJENCI
-        6.	*wyreguluj rachunki (opłać wizytę/zabiegi) POST/PUT
-        7.	*pobierz listę nadchodzących wizyt pacjenta GET
-        8. Popierz listę
-*/

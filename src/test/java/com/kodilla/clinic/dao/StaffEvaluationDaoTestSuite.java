@@ -51,7 +51,7 @@ public class StaffEvaluationDaoTestSuite {
     @Test
     public void testStaffEvaluationDaoSaveWith_Doctor_And_Patient() {
         //Given
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(new WorkingDay(Day.MONDAY, Hour.EIGHT_AM, Hour.FIVE_PM))
                 .workingDay(new WorkingDay(Day.WEDNESDAY, Hour.NINE_THIRTY_AM, Hour.SIX_THIRTY_PM))
                 .workingDay(new WorkingDay(Day.FRIDAY, Hour.TWELVE_PM, Hour.SEVEN_THIRTY_PM))

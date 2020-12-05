@@ -6,7 +6,6 @@ import com.kodilla.clinic.dao.schedule.WorkingDayDao;
 import com.kodilla.clinic.domain.Appointment;
 import com.kodilla.clinic.domain.Doctor;
 import com.kodilla.clinic.domain.Patient;
-import com.kodilla.clinic.domain.StaffEvaluation;
 import com.kodilla.clinic.enums.*;
 import com.kodilla.clinic.domain.schedule.ClinicDoctorSchedule;
 import com.kodilla.clinic.domain.schedule.EmergencyHour;
@@ -24,7 +23,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -85,7 +83,7 @@ public class AppointmentDaoTestSuite {
                 new BigDecimal(998877123), new BigDecimal(111222333), "wojciech.r.sak@gmail.com");
 
 
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(new WorkingDay(Day.MONDAY, Hour.EIGHT_AM, Hour.FIVE_PM))
                 .workingDay(new WorkingDay(Day.WEDNESDAY, Hour.NINE_THIRTY_AM, Hour.SIX_THIRTY_PM))
                 .workingDay(new WorkingDay(Day.FRIDAY, Hour.TWELVE_PM, Hour.SEVEN_THIRTY_PM))

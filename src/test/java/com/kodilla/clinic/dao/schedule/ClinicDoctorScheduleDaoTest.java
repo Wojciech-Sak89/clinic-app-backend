@@ -38,7 +38,7 @@ public class ClinicDoctorScheduleDaoTest {
     @Test
     public void testClinicDoctorScheduleDaoSave() {
         //Given
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder().build();
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder().build();
 
         //When
         clinicDoctorScheduleDao.save(clinicDoctorSchedule);
@@ -82,7 +82,7 @@ public class ClinicDoctorScheduleDaoTest {
         EmergencyHour emergencyHour = new EmergencyHour(Day.FRIDAY, Hour.FOUR_PM);
         emergencyHourDao.save(emergencyHour);
 
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(workingDay1)
                 .workingDay(workingDay2)
                 .emergencyHour(emergencyHour)

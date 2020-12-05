@@ -49,7 +49,7 @@ public class EmergencyHourDaoTest {
         //Given
         EmergencyHour emergencyHour = new EmergencyHour(Day.FRIDAY, Hour.FOUR_PM);
 
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .emergencyHour(emergencyHour)
                 .build();
 

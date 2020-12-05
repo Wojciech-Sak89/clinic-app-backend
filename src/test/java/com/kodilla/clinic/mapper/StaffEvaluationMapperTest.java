@@ -69,7 +69,7 @@ public class StaffEvaluationMapperTest {
                 new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com");
 
 
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(new WorkingDay(Day.MONDAY, Hour.EIGHT_AM, Hour.FIVE_PM))
                 .workingDay(new WorkingDay(Day.WEDNESDAY, Hour.NINE_THIRTY_AM, Hour.SIX_THIRTY_PM))
                 .workingDay(new WorkingDay(Day.FRIDAY, Hour.TWELVE_PM, Hour.SEVEN_THIRTY_PM))
@@ -147,7 +147,7 @@ public class StaffEvaluationMapperTest {
                 new BigDecimal(998877123), new BigDecimal(111222333), "smith.j@one.com");
 
 
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(new WorkingDay(Day.MONDAY, Hour.EIGHT_AM, Hour.FIVE_PM))
                 .workingDay(new WorkingDay(Day.WEDNESDAY, Hour.NINE_THIRTY_AM, Hour.SIX_THIRTY_PM))
                 .workingDay(new WorkingDay(Day.FRIDAY, Hour.TWELVE_PM, Hour.SEVEN_THIRTY_PM))
@@ -205,7 +205,7 @@ public class StaffEvaluationMapperTest {
                 new BigDecimal(1111119999), new BigDecimal(90909090), "leo.d@one.com",
                 true, new ArrayList<>(), new ArrayList<>());
 
-        ClinicDoctorSchedule clinicDoctorSchedule1 = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule1 = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(new WorkingDay(Day.MONDAY, Hour.EIGHT_AM, Hour.FIVE_PM))
                 .emergencyHour(new EmergencyHour(Day.FRIDAY, Hour.FOUR_PM))
                 .build();
@@ -214,7 +214,7 @@ public class StaffEvaluationMapperTest {
                 "rich.dav.md@clinic.com", clinicDoctorSchedule1, "Richards Biogram",
                 new ArrayList<>(), new ArrayList<>());
 
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(new WorkingDay(Day.FRIDAY, Hour.TWELVE_PM, Hour.SEVEN_THIRTY_PM))
                 .emergencyHour(new EmergencyHour(Day.MONDAY, Hour.SEVEN_THIRTY_PM))
                 .build();

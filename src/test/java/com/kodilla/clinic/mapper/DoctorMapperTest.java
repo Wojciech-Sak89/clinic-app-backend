@@ -70,7 +70,7 @@ public class DoctorMapperTest {
         emergencyHourDao.save(emergencyHour1);
         emergencyHourDao.save(emergencyHour2);
 
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(workingDay1)
                 .workingDay(workingDay2)
                 .workingDay(workingDay3)
@@ -143,7 +143,7 @@ public class DoctorMapperTest {
         emergencyHourDao.save(emergencyHour1);
         emergencyHourDao.save(emergencyHour2);
 
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(workingDay1)
                 .workingDay(workingDay2)
                 .workingDay(workingDay3)
@@ -203,7 +203,7 @@ public class DoctorMapperTest {
         emergencyHourDao.save(emergencyHour1);
         emergencyHourDao.save(emergencyHour2);
 
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(workingDay1)
                 .workingDay(workingDay2)
                 .workingDay(workingDay3)
@@ -270,7 +270,7 @@ public class DoctorMapperTest {
         emergencyHourDao.save(emergencyHour1);
         emergencyHourDao.save(emergencyHour2);
 
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(workingDay1)
                 .workingDay(workingDay2)
                 .workingDay(workingDay3)
@@ -334,12 +334,12 @@ public class DoctorMapperTest {
         emergencyHourDao.save(emergencyHour1);
         emergencyHourDao.save(emergencyHour2);
 
-        ClinicDoctorSchedule clinicDoctorSchedule1 = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule1 = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(workingDay1)
                 .emergencyHour(emergencyHour1)
                 .build();
 
-        ClinicDoctorSchedule clinicDoctorSchedule2 = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule2 = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(workingDay3)
                 .emergencyHour(emergencyHour2)
                 .build();

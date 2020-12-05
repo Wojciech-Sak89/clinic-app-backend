@@ -47,7 +47,7 @@ public class WorkingDayDaoTest {
         //Given
         WorkingDay workingDay = new WorkingDay(Day.FRIDAY, Hour.FOUR_PM, Hour.SIX_THIRTY_PM);
 
-        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.Builder()
+        ClinicDoctorSchedule clinicDoctorSchedule = new ClinicDoctorSchedule.ScheduleBuilder()
                 .workingDay(workingDay)
                 .build();
 

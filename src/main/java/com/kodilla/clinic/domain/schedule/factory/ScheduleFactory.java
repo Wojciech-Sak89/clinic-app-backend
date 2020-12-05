@@ -19,7 +19,7 @@ public class ScheduleFactory {
     public final ClinicDoctorSchedule createSchedule(final String scheduleType) {
         switch (scheduleType) {
             case FULLTIME_FROM_MORNING_WITH_STANDARD_EMERGENCY:
-                return new ClinicDoctorSchedule.Builder()
+                return new ClinicDoctorSchedule.ScheduleBuilder()
                         .workingDay(new WorkingDay(Day.MONDAY, Hour.EIGHT_AM, Hour.THREE_THIRTY_PM))
                         .workingDay(new WorkingDay(Day.TUESDAY, Hour.EIGHT_AM, Hour.THREE_THIRTY_PM))
                         .workingDay(new WorkingDay(Day.WEDNESDAY, Hour.EIGHT_AM, Hour.THREE_THIRTY_PM))
@@ -32,7 +32,7 @@ public class ScheduleFactory {
                         .emergencyHour(new EmergencyHour(Day.FRIDAY, Hour.TWELVE_PM))
                         .build();
             case HALFTIME_EVERYDAY_FROM_MORNING_WITH_STANDARD_EMERGENCY:
-                return new ClinicDoctorSchedule.Builder()
+                return new ClinicDoctorSchedule.ScheduleBuilder()
                         .workingDay(new WorkingDay(Day.MONDAY, Hour.EIGHT_AM, Hour.ELEVEN_THIRTY_AM))
                         .workingDay(new WorkingDay(Day.TUESDAY, Hour.EIGHT_AM, Hour.ELEVEN_THIRTY_AM))
                         .workingDay(new WorkingDay(Day.WEDNESDAY, Hour.EIGHT_AM, Hour.ELEVEN_THIRTY_AM))
@@ -45,13 +45,13 @@ public class ScheduleFactory {
                         .emergencyHour(new EmergencyHour(Day.FRIDAY, Hour.TWELVE_PM))
                         .build();
             case MON_WED_FRI_NO_EMERGENCY:
-                return new ClinicDoctorSchedule.Builder()
+                return new ClinicDoctorSchedule.ScheduleBuilder()
                         .workingDay(new WorkingDay(Day.MONDAY, Hour.EIGHT_AM, Hour.THREE_THIRTY_PM))
                         .workingDay(new WorkingDay(Day.WEDNESDAY, Hour.EIGHT_AM, Hour.THREE_THIRTY_PM))
                         .workingDay(new WorkingDay(Day.FRIDAY, Hour.EIGHT_AM, Hour.THREE_THIRTY_PM))
                         .build();
             case THUR_FRI_EVENING_EMERGENCY:
-                return new ClinicDoctorSchedule.Builder()
+                return new ClinicDoctorSchedule.ScheduleBuilder()
                         .workingDay(new WorkingDay(Day.THURSDAY, Hour.TWELVE_PM, Hour.SEVEN_THIRTY_PM))
                         .workingDay(new WorkingDay(Day.FRIDAY, Hour.TWELVE_PM, Hour.SEVEN_THIRTY_PM))
                         .emergencyHour(new EmergencyHour(Day.THURSDAY, Hour.SEVEN_THIRTY_PM))

@@ -3,7 +3,6 @@ package com.kodilla.clinic.domain.schedule;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 @Entity
 @Table(name = "CLINIC_DOCTORS_SCHEDULES")
@@ -13,12 +12,6 @@ public class ClinicDoctorSchedule {
     @Column(name = "CLINIC_DOCTOR_SCHEDULE_ID", unique = true)
     private Integer schedule_id;
 
-    //    @OneToMany(
-//            targetEntity = WorkingDay.class,
-//            mappedBy = "schedule",
-//            cascade = CascadeType.MERGE,
-//            fetch = FetchType.LAZY
-//    )
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "JOIN_SCHEDULE__WORKING_DAY",
@@ -27,12 +20,6 @@ public class ClinicDoctorSchedule {
     )
     private List<WorkingDay> workingDays = new ArrayList<>();
 
-    //    @OneToMany(
-//            targetEntity = EmergencyHour.class,
-//            mappedBy = "schedule",
-//            cascade = CascadeType.MERGE,
-//            fetch = FetchType.LAZY
-//    )
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "JOIN_SCHEDULE__EMERGENCY_HOUR",
@@ -41,16 +28,16 @@ public class ClinicDoctorSchedule {
     )
     private List<EmergencyHour> emergencyHours = new ArrayList<>();
 
-    public static class Builder {
+    public static class ScheduleBuilder {
         private final List<WorkingDay> workingDays = new ArrayList<>();
         private final List<EmergencyHour> emergencyHours = new ArrayList<>();
 
-        public Builder workingDay(WorkingDay workingDay) {
+        public ScheduleBuilder workingDay(WorkingDay workingDay) {
             workingDays.add(workingDay);
             return this;
         }
 
-        public Builder emergencyHour(EmergencyHour emergencyHour) {
+        public ScheduleBuilder emergencyHour(EmergencyHour emergencyHour) {
             emergencyHours.add(emergencyHour);
             return this;
         }

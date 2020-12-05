@@ -29,18 +29,3 @@ public class MedicController {
         return service.getSpecialisations(birthYear, gender, symptoms);
     }
 }
-
-
-/*    @RequestMapping(method = RequestMethod.GET, value = "emergencyHours/{hourId}")
-    public EmergencyHourDto getEmergencyHour(@PathVariable Integer hourId) throws EmergencyHourNotFoundException {
-        return mapper.mapToEmergencyHourDto(service.getEmergencyHour(hourId).orElseThrow(EmergencyHourNotFoundException::new));
-    }
-
-    @RequestMapping(method = RequestMethod.POST, value = "emergencyHours")
-    public EmergencyHourDto addEmergencyHour(@RequestBody EmergencyHourDto emergencyHourDto) {
-        return mapper.mapToEmergencyHourDto(service.saveEmergencyHour(mapper.mapToEmergencyHour(emergencyHourDto)));
-    }*/
-
-/*    public List<SpecialisationDto> getSpecialisations(int birthYear, Gender gender, List<Integer> symptomsIds) {
-        return medicClient.getSpecialisations(birthYear, gender, symptomsIds);
-    }*/

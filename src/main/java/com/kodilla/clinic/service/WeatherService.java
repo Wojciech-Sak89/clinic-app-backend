@@ -18,7 +18,7 @@ public class WeatherService {
     private PersonalizedForecast personalizedForecast;
 
     public ForecastDto getCurrentForecast() {
-        System.out.println("??????????????????  Current forecast:" + weatherClient.getForecast());
+        System.out.println("WeatherService.getCurrentForecast()  Current forecast:" + weatherClient.getForecast());
         return weatherClient.getForecast();
     }
 
