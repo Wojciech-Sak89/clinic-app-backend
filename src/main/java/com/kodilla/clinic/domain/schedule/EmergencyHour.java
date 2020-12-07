@@ -28,8 +28,6 @@ public class EmergencyHour {
     @Column(name = "HOUR")
     private Hour hour;
 
-    //    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-//    @JoinColumn(name = "FK_SCHEDULE_ID")
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "emergencyHours")
     private List<ClinicDoctorSchedule> schedules;
 

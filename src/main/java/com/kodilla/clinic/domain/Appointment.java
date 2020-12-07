@@ -11,20 +11,11 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @NamedQueries({
-//        @NamedQuery(
-//                name = "Appointment.retrievePatientsForthcomingAppointments",
-//                query = "FROM Appointment WHERE Appointment.patient.PATIENT_ID = :PATIENT_ID AND dateTime > NOW()"
-//        ),
         @NamedQuery(
                 name = "Appointment.retrieveForthcomingAppointments",
                 query = "FROM Appointment WHERE dateTime > NOW()"
-//                query = "SELECT a FROM Appointment a WHERE a.patient.patient_id = :PATIENT_ID AND a.dateTime > current_time "
         )
 })
-//query = "FROM Appointment WHERE Appointment.patient.PATIENT_ID = :PATIENT_ID AND dateTime > NOW()"
-//"SELECT  u FROM User u WHERE u.fk.FK_ID =:FK_ID")
-// a.dateTime > LocalDateTime.now()
-
 @NamedNativeQuery(
         name = "Appointment.retrievePatientsForthcomingAppointments",
         query = "SELECT * FROM APPOINTMENTS" +

@@ -47,14 +47,8 @@ public class MedicClient {
 
     public List<SpecialisationDto> getSpecialisations(int birthYear, Gender gender, List<Integer> symptomsIds) throws Exception {
         URI url = getSpecialisationsUri(birthYear, gender, symptomsIds);
-        System.out.println("#####################\n URL in MedicClient.getSpecialisations() before try" + url
-                + "#####################\n)");
-
         try {
             Optional<SpecialisationDto[]> specialisationsResponse = Optional.ofNullable(restTemplate.getForObject(url, SpecialisationDto[].class));
-            System.out.println("#####################\nURL MedicClient.getSpecialisations() after try{  " +
-                    "Optional<SpecialisationDto[]> specialisationsResponse = Optional.ofNullable(restTemplate.getForObject(url, SpecialisationDto[].class)); }: " + url
-                    + "#####################\n");
             return Arrays.asList(specialisationsResponse.orElse(new SpecialisationDto[0]));
         } catch (RestClientException e) {
             LOGGER.error(e.getMessage(), e);
@@ -80,27 +74,4 @@ public class MedicClient {
                 .query("symptoms=" + symptomsIds)
                 .build().encode().toUri();
     }
-
-//    @GetMapping("/get")
-//    public Resource get(){
-//        String url = "http://localhost:8085/post";
-//
-//        HttpHeaders httpHeaders = new HttpHeaders();
-//        httpHeaders.setContentType(MediaType.APPLICATION_JSON);
-//
-//        UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(url)
-//                .queryParam("path", "home");
-//
-//        RestTemplate restTemplate = new RestTemplate();
-//        restTemplate.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-//
-//        HttpEntity<Map<String, String>> request = new HttpEntity<>(Collections.singletonMap("key", "valid"), httpHeaders);
-//
-//        Resource resource = restTemplate.postForObject(builder.toUriString(), request, Resource.class);
-//
-//        return resource;
-//    }
-
-    //header
-
 }

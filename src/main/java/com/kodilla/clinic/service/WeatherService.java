@@ -14,11 +14,9 @@ public class WeatherService {
     @Autowired
     private WeatherClient weatherClient;
 
-    @Autowired
-    private PersonalizedForecast personalizedForecast;
+    private final PersonalizedForecast personalizedForecast = PersonalizedForecast.getInstance();
 
     public ForecastDto getCurrentForecast() {
-        System.out.println("WeatherService.getCurrentForecast()  Current forecast:" + weatherClient.getForecast());
         return weatherClient.getForecast();
     }
 

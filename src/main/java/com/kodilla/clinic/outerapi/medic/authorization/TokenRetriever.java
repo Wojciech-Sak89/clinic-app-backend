@@ -35,16 +35,12 @@ public class TokenRetriever {
             mac.init(keySpec);
             byte[] result = mac.doFinal(url.getBytes());
 
-
-            //            BASE64Encoder encoder = new BASE64Encoder();
             computedHashString = new String(Base64.getEncoder().encode(result));
 
         } catch (NoSuchAlgorithmException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             throw new Exception("Can not create token (NoSuchAlgorithmException)");
         } catch (InvalidKeyException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             throw new Exception("Can not create token (InvalidKeyException)");
         }
@@ -62,11 +58,9 @@ public class TokenRetriever {
             token = objectMapper.readValue(response.getEntity().getContent(), AccessToken.class);
         }
         catch (ClientProtocolException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             throw new Exception("Can not create token (ClientProtocolException)");
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
             throw new Exception("Can not create token (IOException)");
         }

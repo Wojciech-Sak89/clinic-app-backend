@@ -7,6 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 public class SchedulerSettings {
-    @Value("cron = \"0 0 14 ? * SUN,MON,TUE,WED,THU *\"")
+    @Value("cron = \"0 0 14 ? * SUN,MON,TUE,WED,THU\"")
     private String fromSundayToThursdayAtTwoPM;
 }

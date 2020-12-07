@@ -1,18 +1,31 @@
 package com.kodilla.clinic.outerapi.weather.forecast.personalized;
 
 import com.kodilla.clinic.outerapi.weather.forecast.WeatherData;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.List;
 
-@Component
 public class PersonalizedForecast {
+
+    private static PersonalizedForecast personalizedForecastInstance = null;
+
+    private PersonalizedForecast() {
+    }
+
+    public static PersonalizedForecast getInstance() {
+        if (personalizedForecastInstance == null) {
+            synchronized (PersonalizedForecast.class) {
+                if (personalizedForecastInstance == null) {
+                    personalizedForecastInstance = new PersonalizedForecast();
+                }
+            }
+        }
+        return personalizedForecastInstance;
+    }
 
     public WeatherData findNearest(LocalDateTime visitTime, List<WeatherData> forecasts) {
         long visitTimeStamp = visitTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli() / 1000;
-        System.out.println("!!!!!!!!!!!!  visitTimeStamp" + visitTimeStamp);
         return forecasts.stream()
                 .filter(forecast -> visitTimeStamp <= forecast.getTimeStamp())
                 .findFirst()

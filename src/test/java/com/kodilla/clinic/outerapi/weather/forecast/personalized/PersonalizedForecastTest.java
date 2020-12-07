@@ -19,8 +19,7 @@ import static org.junit.Assert.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PersonalizedForecastTest {
-    @Autowired
-    private PersonalizedForecast personalizedForecast;
+    private final PersonalizedForecast personalizedForecast = PersonalizedForecast.getInstance();
 
     @Test
     public void getNearestForecast() {

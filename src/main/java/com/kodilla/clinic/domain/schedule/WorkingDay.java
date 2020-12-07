@@ -32,8 +32,6 @@ public class WorkingDay {
     @Column(name = "END_HOUR")
     private Hour endHour;
 
-    //    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
-//    @JoinColumn(name = "FK_SCHEDULE_ID")
     @ManyToMany(cascade = CascadeType.ALL, mappedBy = "workingDays")
     private List<ClinicDoctorSchedule> schedules;
 

@@ -44,10 +44,3 @@ public class DoctorController {
         service.deleteDoctor(doctorId);
     }
 }
-
-/*
-6.	Zwolnij lekarza ;) PUT
-7.	*Pobierz schedule lekarza GET
-8.	*Zmień Schedule lekarza -> workingDays PUT
-9.	*Zmień Schedule lekarza -> emergencyHours PUT
-*/
