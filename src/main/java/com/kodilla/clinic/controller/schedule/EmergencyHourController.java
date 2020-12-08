@@ -4,6 +4,7 @@ import com.kodilla.clinic.dto.schedule.EmergencyHourDto;
 import com.kodilla.clinic.exception.schedule.EmergencyHourNotFoundException;
 import com.kodilla.clinic.mapper.schedule.EmergencyHourMapper;
 import com.kodilla.clinic.service.DbService;
+import com.kodilla.clinic.service.schedule.ScheduleDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class EmergencyHourController {
     private EmergencyHourMapper mapper;
 
     @Autowired
-    private DbService service;
+    private ScheduleDbService service;
 
     @RequestMapping(method = RequestMethod.GET, value = "emergencyHours")
     public List<EmergencyHourDto> getEmergencyHours() {

@@ -7,6 +7,7 @@ import com.kodilla.clinic.enums.Day;
 import com.kodilla.clinic.enums.Hour;
 import com.kodilla.clinic.mapper.schedule.EmergencyHourMapper;
 import com.kodilla.clinic.service.DbService;
+import com.kodilla.clinic.service.schedule.ScheduleDbService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class EmergencyHourControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private DbService service;
+    private ScheduleDbService service;
 
     @MockBean
     private EmergencyHourMapper mapper;

@@ -5,6 +5,7 @@ import com.kodilla.clinic.domain.schedule.ClinicDoctorSchedule;
 import com.kodilla.clinic.dto.schedule.ClinicDoctorScheduleDto;
 import com.kodilla.clinic.mapper.schedule.ClinicDoctorScheduleMapper;
 import com.kodilla.clinic.service.DbService;
+import com.kodilla.clinic.service.schedule.ScheduleDbService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,7 @@ public class ClinicDoctorScheduleControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private DbService service;
+    private ScheduleDbService service;
 
     @MockBean
     private ClinicDoctorScheduleMapper mapper;

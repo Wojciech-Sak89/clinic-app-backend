@@ -7,6 +7,7 @@ import com.kodilla.clinic.enums.Day;
 import com.kodilla.clinic.enums.Hour;
 import com.kodilla.clinic.mapper.schedule.WorkingDayMapper;
 import com.kodilla.clinic.service.DbService;
+import com.kodilla.clinic.service.schedule.ScheduleDbService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,7 @@ public class WorkingDayControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private DbService service;
+    private ScheduleDbService scheduleDbService;
 
     @MockBean
     private WorkingDayMapper mapper;
@@ -43,7 +44,7 @@ public class WorkingDayControllerTest {
     public void shouldGetEmptyWorkingDayList() throws Exception {
         //Given
         List<WorkingDay> workingDayList = new ArrayList<>();
-        when(service.getAllWorkingDays()).thenReturn(workingDayList);
+        when(scheduleDbService.getAllWorkingDays()).thenReturn(workingDayList);
         when(mapper.mapToWorkingDaysDtos(workingDayList)).thenReturn(new ArrayList<>());
 
         //When & Then
@@ -61,7 +62,7 @@ public class WorkingDayControllerTest {
         List<WorkingDayDto> workingDayDtos = new ArrayList<>();
         workingDayDtos.add(new WorkingDayDto(15, Day.FRIDAY, Hour.EIGHT_AM, Hour.ELEVEN_AM, new ArrayList<>()));
 
-        when(service.getAllWorkingDays()).thenReturn(workingDayList);
+        when(scheduleDbService.getAllWorkingDays()).thenReturn(workingDayList);
         when(mapper.mapToWorkingDaysDtos(workingDayList)).thenReturn(workingDayDtos);
 
         //When & Then
@@ -83,7 +84,7 @@ public class WorkingDayControllerTest {
         WorkingDayDto workingDayDto =
                 new WorkingDayDto(15, Day.FRIDAY, Hour.EIGHT_AM, Hour.ELEVEN_AM, new ArrayList<>());
 
-        when(service.getWorkingDay(15)).thenReturn(java.util.Optional.of(workingDay));
+        when(scheduleDbService.getWorkingDay(15)).thenReturn(java.util.Optional.of(workingDay));
         when(mapper.mapToWorkingDayDto(workingDay)).thenReturn(workingDayDto);
 
         //When & Then
@@ -126,7 +127,7 @@ public class WorkingDayControllerTest {
                 new WorkingDayDto(15, Day.FRIDAY, Hour.EIGHT_AM, Hour.ELEVEN_AM, new ArrayList<>());
 
         when(mapper.mapToWorkingDayDto(any())).thenReturn(workingDayDto);
-        when(service.saveWorkingDay(workingDay)).thenReturn(workingDay);
+        when(scheduleDbService.saveWorkingDay(workingDay)).thenReturn(workingDay);
         when(mapper.mapToWorkingDay(workingDayDto)).thenReturn(workingDay);
 
         Gson gson = new Gson();

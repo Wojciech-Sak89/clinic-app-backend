@@ -4,6 +4,7 @@ import com.kodilla.clinic.dto.schedule.ClinicDoctorScheduleDto;
 import com.kodilla.clinic.exception.schedule.ClinicDoctorScheduleNotFoundException;
 import com.kodilla.clinic.mapper.schedule.ClinicDoctorScheduleMapper;
 import com.kodilla.clinic.service.DbService;
+import com.kodilla.clinic.service.schedule.ScheduleDbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public class ClinicDoctorScheduleController {
     private ClinicDoctorScheduleMapper mapper;
 
     @Autowired
-    private DbService service;
+    private ScheduleDbService service;
 
     @RequestMapping(method = RequestMethod.GET, value = "clinicDoctorsSchedules")
     public List<ClinicDoctorScheduleDto> getSchedules() {
