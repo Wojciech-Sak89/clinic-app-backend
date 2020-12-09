@@ -13,7 +13,7 @@ import java.util.List;
 @SpringBootTest
 public class HttpRequestsTest {
     @Test
-    public void testArrayHttp() {
+    public void testArrayStringFormat_ForHttpBody() {
         List<Integer> integers = new ArrayList<>();
         integers.add(233);
         integers.add(561);

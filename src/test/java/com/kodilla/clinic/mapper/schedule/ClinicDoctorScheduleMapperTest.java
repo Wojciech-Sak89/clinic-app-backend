@@ -1,16 +1,13 @@
 package com.kodilla.clinic.mapper.schedule;
 
-import com.kodilla.clinic.dao.schedule.EmergencyHourDao;
-import com.kodilla.clinic.dao.schedule.WorkingDayDao;
+import com.kodilla.clinic.domain.schedule.ClinicDoctorSchedule;
+import com.kodilla.clinic.domain.schedule.EmergencyHour;
+import com.kodilla.clinic.domain.schedule.WorkingDay;
 import com.kodilla.clinic.dto.schedule.ClinicDoctorScheduleDto;
 import com.kodilla.clinic.dto.schedule.EmergencyHourDto;
 import com.kodilla.clinic.dto.schedule.WorkingDayDto;
 import com.kodilla.clinic.enums.Day;
 import com.kodilla.clinic.enums.Hour;
-import com.kodilla.clinic.domain.schedule.ClinicDoctorSchedule;
-import com.kodilla.clinic.domain.schedule.EmergencyHour;
-import com.kodilla.clinic.domain.schedule.WorkingDay;
-import com.kodilla.clinic.domain.schedule.factory.ScheduleFactory;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -29,15 +26,6 @@ import static org.junit.Assert.*;
 public class ClinicDoctorScheduleMapperTest {
     @Autowired
     private ClinicDoctorScheduleMapper clinicDoctorScheduleMapper;
-
-    @Autowired
-    private ScheduleFactory scheduleFactory;
-
-    @Autowired
-    private EmergencyHourDao emergencyHourDao;
-
-    @Autowired
-    private WorkingDayDao workingDayDao;
 
     @Test
     public void testMapToClinicDoctorSchedule_Zero_WorkingDays_EmergencyHours() {
